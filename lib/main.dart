@@ -1,125 +1,100 @@
 import 'package:flutter/material.dart';
+import "dart:math";
 
-void main() {
-  runApp(const MyApp());
+void main(List<String> args) {
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class App extends StatefulWidget {
+  App({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<App> createState() => _AppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _AppState extends State<App> {
+  String _phrase = "Clique no botão para gerar uma nova frase";
+  var _phrase_list = [
+  "Nada como um dia pior que o outro.",
+  "Comemore as pequenas derrotas.",
+  "Os sonhos antecedem os fracassos.",
+  "O caminho é longo, mas a derrota é certa.",
+  "É só uma fase ruim, logo vai piorar.",
+  "Nunca foi azar, sempre foi incompetência.",
+  "Seja o protagonista do seu fracasso.",
+  "Não pare! Faça até dar errado.",
+  "Só dará errado se você tentar.",
+  "Nunca é tarde demais para desistir.",
+  "A mediocridade é o destino de todos.",
+  "Não se preocupe em tentar, você vai falhar de qualquer maneira.",
+  "Por que tentar se você pode falhar sem esforço?",
+  "A única constante na vida é o seu fracasso.",
+  "Não há luz no fim do túnel, apenas mais escuridão.",
+  "Nunca subestime sua capacidade de falhar.",
+  "Nada é impossível - para o fracasso.",
+  "Não há problema em falhar, desde que você esteja acostumado.",
+  "Por que tentar se você pode culpar as circunstâncias?",
+  "Não é só uma fase ruim - é uma vida ruim.",
+  "Expectativas baixas, decepções menores.",
+  "Não se preocupe em tentar, você já sabe como isso vai terminar.",
+  "Seu potencial é limitado - assim como suas chances de sucesso.",
+  "Seja realista - você não vai chegar muito longe.",
+  "Se você acha que pode, você está enganado.",
+  "Quando tudo estiver dando errado, se acostume.",
+  "Não dá pra mudar o passado, mas dá pra estragar o futuro.",
+  "Nenhum obstáculo é grande demais para quem desiste!",
+  "Seu sucesso é tão provável quanto uma loteria.",
+  "Não se esforce demais - ninguém se importa.",
+  "A vida é um ciclo interminável de decepções.",
+  "Não se preocupe em se destacar - você é facilmente esquecível.",
+  "O fracasso é a única coisa que você pode contar.",
+  "Por que tentar quando você pode desistir com antecedência?",
+  "Desistir é mais fácil do que continuar tentando.",
+  "Não espere nada da vida - ela não espera nada de você.",
+  "Não há recompensa pelo seu esforço - apenas mais dor.",
+  "Seja realista: suas ambições são inalcançáveis.",
+  "O sucesso é uma miragem em seu deserto de falhas.",
+  "Você não é excepcional - apenas medíocre em uma multidão.",
+  "A vida é uma sucessão de arrependimentos e lamentações.",
+  "Não busque a felicidade - você nunca a encontrará.",
+  "Por que se preocupar com o futuro se ele só trará desgosto?",
+  "A esperança é apenas uma ilusão para os tolos.",
+  "Não se esforce - você não merece mais do que isso.",
+  "Seu potencial é insignificante - como sua existência.",
+  "O sucesso é um conceito estranho e distante para você.",
+  "A vida é uma piada cruel, e você é a vítima.",
+  "Não tente impressionar - ninguém está prestando atenção.",
+  "Seu destino é o fracasso, então abrace-o.",
+  "Você nunca será bom o suficiente - e isso é um fato.",
+  "Seu legado será esquecido - como tudo o mais em sua vida.",
+  "Não se iluda pensando que pode mudar algo - você é impotente.",
+  "Por que se esforçar quando você está destinado a falhar?",
+  "Não há luz no fim do túnel - apenas mais desespero.",
+  "Desistir é a única opção sensata em sua situação."
+];
 
-  void _incrementCounter() {
+
+  void _newPhrase() {
+    var phrase = _phrase_list[Random().nextInt(_phrase_list.length)].toString();
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _phrase = phrase;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+    return MaterialApp(
+      home: Scaffold(
+        body: Column(
+          children: [
+            Text(_phrase),
+            ElevatedButton(
+              onPressed: _newPhrase,
+              child: Icon(Icons.add),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
