@@ -1,16 +1,27 @@
-# gerador_frases_desmotivacionais
+# Gerador de Frases (Des)motivacionais
 
-A new Flutter project.
+Aplicativo desenvolvido em Flutter, que mostra frases (des)motivacionais aleatórias.
 
-## Getting Started
+O aplicativo é a segunda versão do [`Gerador-Frases-Desmotivacionais-Kotlin`](https://github.com/oJaciel/Gerador-Frases-Desmotivacionais-Kotlin), desenvolvido em Kotlin
 
-This project is a starting point for a Flutter application.
+## Funcionalidades
 
-A few resources to get you started if this is your first Flutter project:
+- Gera uma nova frase (des)motivacional aleatória ao pressionar o botão.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Instalação
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Clone o repositório:
+   ```
+   git clone https://github.com/oJaciel/Gerador-Frases-Desmotivacionais-V2
+   ```
+
+Clone o repositório:
+   ```
+   flutter pub get
+   ```
+
+
+Clone o repositório:
+   ```
+   flutter run
+   ```
