@@ -13,7 +13,10 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  //Variável da frase mostrada na tela
   String _phrase = "Clique no botão para gerar uma nova frase";
+
+  //Lista das frases
   var _phrase_list = [
   "Nada como um dia pior que o outro.",
   "Comemore as pequenas derrotas.",
@@ -74,9 +77,12 @@ class _AppState extends State<App> {
 ];
 
 
+  //Função para trocar a frase da tela
   void _newPhrase() {
+    //Captando um elemento aleatório da lista de frases
     var phrase = _phrase_list[Random().nextInt(_phrase_list.length)].toString();
     setState(() {
+      //A frase da tela agora é a frase aleatória
       _phrase = phrase;
     });
   }
@@ -84,15 +90,18 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Column(
-          children: [
-            Text(_phrase),
-            ElevatedButton(
-              onPressed: _newPhrase,
-              child: Icon(Icons.add),
-            ),
-          ],
+        body: Center(
+          child: Column(
+            children: [
+              Text(_phrase),
+              ElevatedButton(
+                onPressed: _newPhrase,
+                child: Icon(Icons.add),
+              ),
+            ],
+          ),
         ),
       ),
     );
