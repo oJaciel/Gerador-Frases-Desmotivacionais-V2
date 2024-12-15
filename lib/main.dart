@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:gerador_frases_desmotivacionais/components/appbar.dart';
 import 'package:gerador_frases_desmotivacionais/components/floating_button.dart';
 import "dart:math";
-
 import 'package:gerador_frases_desmotivacionais/components/phrase.dart';
 import 'package:gerador_frases_desmotivacionais/data/phrase_provider.dart';
+import 'package:gerador_frases_desmotivacionais/theme/app_theme.dart';
 
 void main(List<String> args) {
   runApp(App());
 }
 
 class App extends StatefulWidget {
-  App({super.key});
-
   @override
   State<App> createState() => _AppState();
 }
@@ -36,16 +35,19 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = Appbar(); //Instância da Appbar
+
+    //Tamanho disponível = altura da tela - tamanho do appBar
+    final availableHeight = MediaQuery.of(context).size.height -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     return MaterialApp(
+      theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: Column(
-            children: [
-              Phrase(_phrase),
-            ],
-          ),
-        ),
+        appBar: appBar,
+        body: Phrase(_phrase, availableHeight),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingButton(_newPhrase, _buttonClicked),
       ),
