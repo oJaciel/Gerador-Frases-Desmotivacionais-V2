@@ -22,13 +22,27 @@ class _AppState extends State<App> {
   final _phraseList = PhraseProvider.phraseList;
   var _buttonClicked = false;
 
-  //Função para trocar a frase da tela
+  // Variável para armazenar a cor de fundo atual
+  Color _backgroundColor = Colors.white;
+
+  // Função para gerar uma cor *clara* aleatória
+  Color _generateLightColor() {
+    final Random random = Random();
+    int r = 200 + random.nextInt(56); // Valores de 200 a 255
+    int g = 200 + random.nextInt(56); // Valores de 200 a 255
+    int b = 200 + random.nextInt(56); // Valores de 200 a 255
+    return Color.fromARGB(255, r, g, b);
+  }
+
+  //Função para trocar a frase da tela e mudar cor de fundo
   void _newPhrase() {
     //Captando um elemento aleatório da lista de frases
     var phrase = _phraseList[Random().nextInt(_phraseList.length)].toString();
     setState(() {
       //A frase da tela agora é a frase aleatória
       _phrase = phrase;
+      // Gera uma nova cor de fundo aleatória
+      _backgroundColor = _generateLightColor();
     });
     _buttonClicked = true;
   }
@@ -47,7 +61,11 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: appBar,
-        body: Phrase(_phrase, availableHeight),
+        body: AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          color: _backgroundColor,
+          child: Phrase(_phrase, availableHeight),
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingButton(_newPhrase, _buttonClicked),
       ),
