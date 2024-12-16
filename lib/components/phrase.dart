@@ -13,12 +13,13 @@ class Phrase extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 40),
           child: Text(
             phrase,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),

@@ -49,7 +49,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    final appBar = Appbar(_phrase); //Instância da Appbar
+    final appBar = Appbar(_phrase, _backgroundColor); //Instância da Appbar
 
     //Tamanho disponível = altura da tela - tamanho do appBar
     final availableHeight = MediaQuery.of(context).size.height -
