@@ -3,7 +3,9 @@ import 'package:gerador_frases_desmotivacionais/components/image_share.dart';
 
 class Appbar extends StatelessWidget implements PreferredSizeWidget {
   Appbar(
+    //Texto para a imagem compartilhada
     this.imgText,
+    //Cor de fundo para a imagem compartilhada
     this.backgroundColor,
   );
 
@@ -23,7 +25,7 @@ class Appbar extends StatelessWidget implements PreferredSizeWidget {
         'Gerador de Frases (Des)Motivacionais',
         style: TextStyle(fontSize: 16),
       ),
-      actions: [ImageShare(imgText, backgroundColor)],
+      actions: [if (imgText != "")ImageShare(imgText, backgroundColor)], //Botão de compartilhar só aparece se a frase não estiver vazia
     );
   }
 }

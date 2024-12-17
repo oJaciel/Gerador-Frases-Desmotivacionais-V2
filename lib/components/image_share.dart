@@ -6,9 +6,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ImageShare extends StatefulWidget {
-  //Texto da imagem
+  //Texto da imagem, captado da AppBar (que capta da main)
   final String imgText;
-  //Cor de fundo da imagem
+  //Cor de fundo da imagem, captado da AppBar (que capta da main)
   final Color backgroundColor;
 
   ImageShare(

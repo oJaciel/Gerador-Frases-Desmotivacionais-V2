@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gerador_frases_desmotivacionais/components/appbar.dart';
+import 'package:gerador_frases_desmotivacionais/components/default_phrase.dart';
 import 'package:gerador_frases_desmotivacionais/components/floating_button.dart';
 import "dart:math";
 import 'package:gerador_frases_desmotivacionais/components/phrase.dart';
@@ -17,7 +18,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   //Variável da frase mostrada na tela
-  String _phrase = "Clique no botão para gerar uma nova frase";
+  String _phrase = "";
 
   final _phraseList = PhraseProvider.phraseList;
   var _buttonClicked = false;
@@ -64,7 +65,9 @@ class _AppState extends State<App> {
         body: AnimatedContainer(
           duration: const Duration(milliseconds: 500),
           color: _backgroundColor,
-          child: Phrase(_phrase, availableHeight),
+          child: (_phrase == "")
+              ? DefaultPhrase(availableHeight) //Se a frase estiver vazia, mostra frase padrão
+              : Phrase(_phrase, availableHeight), //Senão, mostra a frase aleatória
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingButton(_newPhrase, _buttonClicked),
