@@ -7,6 +7,7 @@ O aplicativo é a segunda versão do [`Gerador-Frases-Desmotivacionais-Kotlin`](
 ## Funcionalidades
 
 - Gera uma nova frase (des)motivacional aleatória ao pressionar o botão.
+- A frase gerada pode ser compartilhada, em formato de imagem
 
 ## Instalação
 
@@ -25,3 +26,11 @@ Clone o repositório:
    ```
    flutter run
    ```
+
+   ## Capturas de Tela
+
+![IMG 1](assets\images\Screenshot_1.png)
+
+![GIF 1](assets\images\GIF_1.gif)
+
+![GIF 2](assets\images\GIF_2.gif)
